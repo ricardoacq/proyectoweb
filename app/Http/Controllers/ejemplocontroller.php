@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Usuario;
+use App\clientes;
 use App\proyecto;
 use DB;
 use App\usuarios_proyectos;
 
 class ejemplocontroller extends Controller
 {
+  //muestra listas
      public function index($nombre,$edad){
                return view ('home',compact('nombre','edad'));
             }
@@ -19,13 +20,37 @@ class ejemplocontroller extends Controller
             	$usuarios= Usuario::all();
             	return view('consultarUsuarios',compact('usuarios'));
             }
+
+     public function consultarclientes(){
+        $clientes=clientes::all();
+        return view('consultarclientes',compact('clientes'));
+            }           
+
+     public function consultarproyectos(){
+       $proyectos=proyecto::all();
+          return view('consultarproyectos',compact('proyectos'));
+            }
+
+// elimina
      public function eliminarusuario($id){
              Usuario::find($id)->delete();
              return Redirect('/usuarios');
             }
+     public function eliminarcliente($id){
+             clientes::find($id)->delete();
+             return Redirect('/consultarclientes');
+            }
+     public function eliminarproyecto($id){
+             proyectos::find($id)->delete();
+             return Redirect('/consultarproyectos');
+            }
+
+//registrar nuevo
      public function registrarusuario(){
          return view('registrarusuario');
         }
+
+//guardar cambios        
     public function guardarusuario(Request $Request){ //request guarda la informacion para utilizarse en la BD
         $usuario=new Usuario();
         $usuario->nombre=$Request->input('nombre');
@@ -35,12 +60,14 @@ class ejemplocontroller extends Controller
         return Redirect('/usuarios');
     }
 
+//editar
     public function editarusuario($id){
         $usuario=Usuario::find($id);
     return view('/editarusuario', compact('usuario'));
 
     }
 
+//actualizar
     public function actualizarusuario(Request $Request,$id){
     $usuario=Usuario::find($id);
     $usuario->nombre =$Request ->input('nombre');
@@ -49,12 +76,25 @@ class ejemplocontroller extends Controller
     $usuario->save();
         return Redirect('/usuarios');
     }
+     public function actualizausuariosproyectos(Request $Request,$id){
+      $usuarios=$Request->input('seleccionado');
+      foreach ($usuarios as $u ) {
+          $registro=new usuarios_proyectos();
+          $registro->id_usuarios=$u;
+          $registro->id_proyecto=$id;
+          $registro->save();
+      }
+          return Redirect('/asignarusuarios');
+        
+    }
 
+//asignar
     public function asignarusuarios(){
     $proyectos=proyecto::all();
     return view('asignarUsuarios',compact('proyectos'));
     }
 
+//seleccionar
     public function seleccionarUsuarios(Request $Request){
         $proyectos=proyecto::all();
         $id=$Request->input('proyectos');
@@ -71,19 +111,9 @@ class ejemplocontroller extends Controller
         return view('seleccionarUsuarios', compact('proyectos','usuarios','id'));
 
     }
-    public function actualizausuariosproyectos(Request $Request,$id){
-      $usuarios=$Request->input('seleccionado');
-      foreach ($usuarios as $u ) {
-          $registro=new usuarios_proyectos();
-          $registro->id_usuarios=$u;
-          $registro->id_proyecto=$id;
-          $registro->save();
-      }
-  return Redirect('/asignarusuarios');
-        
-    }
-
-public function PDFproyectos($id){
+   
+//generar PDF
+    public function PDFproyectos($id){
      $lista=DB::table('usuarios_proyectos')
         ->where('id_proyecto','=',$id)
         ->lists('id_usuarios');
@@ -97,6 +127,6 @@ public function PDFproyectos($id){
         $vista=view('PDFproyectos',compact('usuarios','proyecto'));
         $dompdf=\App::make('dompdf.wrapper');
         $dompdf->loadHTML($vista);
-        return $dompdf->stream();
-}
+        return $dompdf->stream();}
+
 }
