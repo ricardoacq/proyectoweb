@@ -41,13 +41,19 @@ class ejemplocontroller extends Controller
              return Redirect('/consultarclientes');
             }
      public function eliminarproyecto($id){
-             proyectos::find($id)->delete();
+             proyecto::find($id)->delete();
              return Redirect('/consultarproyectos');
             }
 
 //registrar nuevo
-     public function registrarusuario(){
+         public function registrarusuario(){
          return view('registrarusuario');
+        }
+         public function registrarcliente(){
+         return view('registrarcliente');
+        }
+         public function registrarproyecto(){
+         return view('registrarproyecto');
         }
 
 //guardar cambios        
@@ -59,12 +65,35 @@ class ejemplocontroller extends Controller
         $usuario->save();
         return Redirect('/usuarios');
     }
+    public function guardarcliente(Request $Request){ //request guarda la informacion para utilizarse en la BD
+        $clientes=new clientes();
+        $clientes->nombre=$Request->input('nombre');
+        $clientes->telefono=$Request->input('telefono');
+        $clientes->correo=$Request->input('correo');
+        $clientes->save();
+        return Redirect('/consultarclientes');
+    }
+    public function guardarproyecto(Request $Request){ //request guarda la informacion para utilizarse en la BD
+        $proyectos=new proyecto();
+        $proyectos->descripcion =$Request ->input('descripcion');
+        $proyectos->id_cliente =$Request ->input('id_cliente');
+        $proyectos->save();
+        return Redirect('/consultarclientes');
+    }
+
 
 //editar
     public function editarusuario($id){
         $usuario=Usuario::find($id);
     return view('/editarusuario', compact('usuario'));
-
+    }
+    public function editarcliente($id){
+        $clientes=clientes::find($id);
+    return view('/editarcliente', compact('clientes'));
+    }
+     public function editarproyecto($id){
+        $proyectos=proyecto::find($id);
+    return view('/editarproyecto', compact('proyectos'));
     }
 
 //actualizar
@@ -75,6 +104,21 @@ class ejemplocontroller extends Controller
     $usuario->correo =$Request ->input('correo');
     $usuario->save();
         return Redirect('/usuarios');
+    }
+     public function actualizarcliente(Request $Request,$id){
+    $clientes=clientes::find($id);
+    $clientes->nombre =$Request ->input('nombre');
+    $clientes->telefono =$Request ->input('telefono');
+    $clientes->correo =$Request ->input('correo');
+    $clientes->save();
+        return Redirect('/consultarclientes');
+    }
+     public function actualizarproyecto(Request $Request,$id){
+    $proyectos=proyecto::find($id);
+    $proyectos->descripcion =$Request ->input('descripcion');
+    $proyectos->id_cliente =$Request ->input('id_cliente');
+    $proyectos->save();
+        return Redirect('/consultarproyectos');
     }
      public function actualizausuariosproyectos(Request $Request,$id){
       $usuarios=$Request->input('seleccionado');

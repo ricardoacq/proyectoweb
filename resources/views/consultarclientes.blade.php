@@ -13,7 +13,7 @@
             <img src="{{asset("img/gato.gif")}}"> 
             <!--asset es necesario para las imagenes fijas ¡-->
      </div>
-     <a href="" class="btn btn-success">Nuevo cliente
+     <a href="{{url('/registrarcliente')}}" class="btn btn-success">Nuevo cliente
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
      <div class="row">
@@ -37,11 +37,11 @@
          		<td>{{$c->correo}}</td>
          		<td>
               
-            <a  class="btn btn-danger btn-xs" href="">
+            <a  class="btn btn-danger btn-xs" href="{{url('/eliminarcliente')}}/{{$c->id}}">
          			<span class="glyphicon glyphicon-remove" aria-hidden="true">Eliminar</span>
          		</a>
 
-            <a  class="btn btn-primary btn-xs" href="">
+            <a  class="btn btn-primary btn-xs" href="{{url('/editarcliente')}}/{{$c->id}}">
               <span class="glyphicon glyphicon-edit" aria-hidden="true">Editar</span>
             </a>
 

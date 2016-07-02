@@ -13,7 +13,7 @@
             <img src="{{asset("img/gato.gif")}}"> 
             <!--asset es necesario para las imagenes fijas ¡-->
      </div>
-     <a href="" class="btn btn-success">Nuevo proyecto
+     <a href="{{url('/registrarproyecto')}}" class="btn btn-success">Nuevo proyecto
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
      <div class="row">
@@ -35,11 +35,11 @@
          		<td>{{$p->id_cliente}}</td>
          		<td>
               
-            <a  class="btn btn-danger btn-xs" href="">
+            <a  class="btn btn-danger btn-xs" href="{{url('/eliminarproyecto')}}/{{$p->id}}">
          			<span class="glyphicon glyphicon-remove" aria-hidden="true">Eliminar</span>
          		</a>
 
-            <a  class="btn btn-primary btn-xs" href="">
+            <a  class="btn btn-primary btn-xs" href="{{url('/editarproyecto')}}/{{$p->id}}">
               <span class="glyphicon glyphicon-edit" aria-hidden="true">Editar</span>
             </a>
 

@@ -21,18 +21,30 @@ Route::get('/usuarios','ejemplocontroller@mostrarusuarios');
 Route::get('/consultarclientes','ejemplocontroller@consultarclientes');
 Route::get('/consultarproyectos','ejemplocontroller@consultarproyectos');
 
-//ELIMINAR O EDITAR
+//ELIMINAR 
 Route::get('/eliminarusuario/{id}','ejemplocontroller@eliminarusuario');
+Route::get('/eliminarproyecto/{id}','ejemplocontroller@eliminarproyecto');
+Route::get('/eliminarcliente/{id}','ejemplocontroller@eliminarcliente');
+
+//EDITAR
 Route::get('/editarusuario/{id}','ejemplocontroller@editarusuario');
+Route::get('/editarcliente/{id}','ejemplocontroller@editarcliente');
+Route::get('/editarproyecto/{id}','ejemplocontroller@editarproyecto');
 
 //AGREGAR NUEVO
 Route::get('/registrarusuario','ejemplocontroller@registrarusuario');
+Route::get('/registrarcliente','ejemplocontroller@registrarcliente');
+Route::get('/registrarproyecto','ejemplocontroller@registrarproyecto');
 
 //GUARDAR CAMBIOS
 Route::post('/guardarusuario','ejemplocontroller@guardarusuario');
+Route::post('/guardarcliente','ejemplocontroller@guardarcliente');
+Route::post('/guardarproyecto','ejemplocontroller@guardarproyecto');
 
 //ACTUALIZAR DATOS
 Route::post('/actualizarusuario/{id}','ejemplocontroller@actualizarusuario');
+Route::post('/actualizarcliente/{id}','ejemplocontroller@actualizarcliente');
+Route::post('/actualizarproyecto/{id}','ejemplocontroller@actualizarproyecto');
 Route::post('/actualizausuariosproyectos/{id}','ejemplocontroller@actualizausuariosproyectos');
 
 //ASIGNAR A PROYECTOS
