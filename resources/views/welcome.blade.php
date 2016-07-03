@@ -4,7 +4,8 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{asset("css/bootstrap.css")}}">
+        <link rel="stylesheet" href="{{asset("css/estilos.css")}}">
         <style>
             html, body {
                 height: 100%;
@@ -19,17 +20,7 @@
                 font-family: 'Lato';
             }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
+            
             .title {
                 font-size: 96px;
             }
@@ -37,7 +28,20 @@
     </head>
     <body>
         <div class="container">
-            <div class="content">
+           <div class="row">
+    <header>  
+    <nav>
+      <ul> 
+        <li><a href="{{asset('/')}}">Home</a></li>
+        <li><a href="{{asset('/asignarusuarios')}}">Asignar usuarios</a></li>
+        <li><a href="{{asset('/usuarios')}}">Consulta Usuarios</a></li>
+        <li><a href="{{asset('/consultarclientes')}}">Consultar Clientes</a></li>
+        <li><a href="{{asset('/consultarproyectos')}}">Consultar Proyectos</a></li>
+      </ul>
+    </nav>
+  </header>
+  </div>
+            <div class="col-xs-12 wall">
                 <div class="title">Laravel 5 Ruta principal</div>
             </div>
         </div>
