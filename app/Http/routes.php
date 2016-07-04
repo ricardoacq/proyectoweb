@@ -37,11 +37,13 @@ Route::get('/editarproyecto/{id}','ejemplocontroller@editarproyecto');
 Route::get('/registrarusuario','ejemplocontroller@registrarusuario');
 Route::get('/registrarcliente','ejemplocontroller@registrarcliente');
 Route::get('/registrarproyecto','ejemplocontroller@registrarproyecto');
+Route::post('/registrarrequisito','ejemplocontroller@registrarrequisito');
 
 //GUARDAR CAMBIOS
 Route::post('/guardarusuario','ejemplocontroller@guardarusuario');
 Route::post('/guardarcliente','ejemplocontroller@guardarcliente');
 Route::post('/guardarproyecto','ejemplocontroller@guardarproyecto');
+Route::post('/guardarrequisito/{id}','ejemplocontroller@guardarrequisito');
 
 //ACTUALIZAR DATOS
 Route::post('/actualizarusuario/{id}','ejemplocontroller@actualizarusuario');
@@ -51,6 +53,7 @@ Route::post('/actualizausuariosproyectos/{id}','ejemplocontroller@actualizausuar
 
 //ASIGNAR A PROYECTOS
 Route::get('/asignarusuarios','ejemplocontroller@asignarusuarios');
+Route::get('/requisitos','ejemplocontroller@requisitos');
 
 //MOSTRAR POSIBLES PARTICIPES
 Route::post('/seleccionarUsuarios','ejemplocontroller@seleccionarUsuarios');

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Usuario;
 use App\clientes;
 use App\proyecto;
+use App\requisitos;
 use DB;
 use App\usuarios_proyectos;
 
@@ -46,14 +47,19 @@ class ejemplocontroller extends Controller
             }
 
 //registrar nuevo
-         public function registrarusuario(){
+        public function registrarusuario(){
          return view('registrarusuario');
         }
-         public function registrarcliente(){
+        public function registrarcliente(){
          return view('registrarcliente');
         }
-         public function registrarproyecto(){
+        public function registrarproyecto(){
          return view('registrarproyecto');
+        }
+        public function registrarrequisito(Request $Request){
+        $proyectos=proyecto::all();
+        $id=$Request->input('proyectos');
+            return view ('/registrarrequisito',compact('id'));
         }
 
 //guardar cambios        
@@ -80,7 +86,16 @@ class ejemplocontroller extends Controller
         $proyectos->save();
         return Redirect('/consultarclientes');
     }
+    public function guardarrequisito(Request $Request,$id){ //request guarda la informacion para utilizarse en la BD
+        
+        $requisitos=new requisitos();
+        $requisitos->descripcion=$Request->input('descripcion');
+        $requisitos->prioridad=$Request->input('prioridad');
+        $requisitos->horas=$Request->input('horas');
+        $requisitos->save();
 
+        return Redirect('/requisitos');
+    }
 
 //editar
     public function editarusuario($id){
@@ -137,12 +152,15 @@ class ejemplocontroller extends Controller
     $proyectos=proyecto::all();
     return view('asignarUsuarios',compact('proyectos'));
     }
+    public function requisitos(){
+    $proyectos=proyecto::all();
+    return view('requisitos',compact('proyectos'));
+    }
 
 //seleccionar
     public function seleccionarUsuarios(Request $Request){
         $proyectos=proyecto::all();
         $id=$Request->input('proyectos');
-        
 
         $lista=DB::table('usuarios_proyectos')
         ->where('id_proyecto','=',$id)
