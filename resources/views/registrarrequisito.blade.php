@@ -10,7 +10,7 @@
     <div class="container">
     <div class="row">
     	<div class="col-xs-12">
-    	<form action="">
+    	<form action="{{url('/guardarrequisito')}}" method="POST">
     		<input type="hidden" name="_token" value="{{csrf_token()}}">
 
              <div class="form-group">

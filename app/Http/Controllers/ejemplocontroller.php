@@ -24,6 +24,7 @@ class ejemplocontroller extends Controller
 
      public function consultarclientes(){
         $clientes=clientes::all();
+
         return view('consultarclientes',compact('clientes'));
             }           
 
@@ -86,8 +87,7 @@ class ejemplocontroller extends Controller
         $proyectos->save();
         return Redirect('/consultarclientes');
     }
-    public function guardarrequisito(Request $Request,$id){ //request guarda la informacion para utilizarse en la BD
-        
+    public function guardarrequisito(Request $Request){ //request guarda la informacion para utilizarse en la BD
         $requisitos=new requisitos();
         $requisitos->descripcion=$Request->input('descripcion');
         $requisitos->prioridad=$Request->input('prioridad');

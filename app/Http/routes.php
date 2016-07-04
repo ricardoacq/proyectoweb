@@ -43,7 +43,7 @@ Route::post('/registrarrequisito','ejemplocontroller@registrarrequisito');
 Route::post('/guardarusuario','ejemplocontroller@guardarusuario');
 Route::post('/guardarcliente','ejemplocontroller@guardarcliente');
 Route::post('/guardarproyecto','ejemplocontroller@guardarproyecto');
-Route::post('/guardarrequisito/{id}','ejemplocontroller@guardarrequisito');
+Route::post('/guardarrequisito','ejemplocontroller@guardarrequisito');
 
 //ACTUALIZAR DATOS
 Route::post('/actualizarusuario/{id}','ejemplocontroller@actualizarusuario');
