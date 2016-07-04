@@ -1,37 +1,16 @@
-<!DOCTYPE html>
- <html lan="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Consulta de Usuarios</title>
-    <link rel="stylesheet" href="{{asset("css/bootstrap.css")}}">
-    <link rel="stylesheet" href="{{asset("css/estilos.css")}}">
-  </head>
-  <body>
-   <div class="container">
-      <div class="row">
-    <header>  
-    <nav>
-      <ul> 
-        <li><a href="{{asset('/')}}">Home</a></li>
-        <li><a href="{{asset('/asignarusuarios')}}">Asignar usuarios</a></li>
-        <li><a href="{{asset('/usuarios')}}">Consulta Usuarios</a></li>
-        <li><a href="{{asset('/consultarclientes')}}">Consultar Clientes</a></li>
-        <li><a href="{{asset('/consultarproyectos')}}">Consultar Proyectos</a></li>
-      </ul>
-    </nav>
-  </header>
-  </div>
-	<div class="row">
-     <div class="col-xs-12 text-center well">
-            <h1>Lista de usuarios</h1>
-            <img src="{{asset("img/gato.gif")}}"> 
-            <!--asset es necesario para las imagenes fijas ¡-->
-     </div>
-     <a href="{{url('registrarusuario')}}" class="btn btn-success">Nuevo Usuario
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-    </div>
-     <div class="row">
-      <div class="col-xs-12">
+@extends('master')
+@section('encabezado')
+<div class="row">
+       <div class="col-xs-12 text-center well">
+        <h1>Seccion de usuarios</h1>
+              <img src="{{asset("img/gato.gif")}}"> 
+              <!--asset es necesario para las imagenes fijas ¡-->
+       </div>
+      </div>
+@stop
+@section('contenido')
+      <a href="{{url('/registrarusuario')}}" class="btn btn-success">Nuevo usuario
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
        <table class="table table-hover">
          <thead>
          	<tr>
@@ -39,7 +18,7 @@
          		<th>Nombre</th>
          		<th>Edad</th>
          		<th>Correo</th>
-         		<th>Eliminar</th>
+         		<th>Opciones</th>
          	</tr>
          </thead>
          <tbody>
@@ -64,8 +43,4 @@
          	@endforeach
          </tbody>
        </table>
-       </div>
-     </div>
-   </div>
-  </body>
-</html>
+@stop

@@ -1,35 +1,16 @@
-<!DOCTYPE html>
-<html lan="en">
-<head>
-	<title>Editar cliente</title>
-	<meta charset="UTF-8">
-
-    <link rel="stylesheet" href="{{asset("css/bootstrap.css")}}">
-    <link rel="stylesheet" href="{{asset("css/estilos.css")}}">
-</head>
-<body>
-<div class="container">
+@extends('master')
+@section('encabezado')
    <div class="row">
-    <header>  
-    <nav>
-      <ul> 
-        <li><a href="{{asset('/')}}">Home</a></li>
-        <li><a href="{{asset('/asignarusuarios')}}">Asignar usuarios</a></li>
-        <li><a href="{{asset('/usuarios')}}">Consulta Usuarios</a></li>
-        <li><a href="{{asset('/consultarclientes')}}">Consultar Clientes</a></li>
-        <li><a href="{{asset('/consultarproyectos')}}">Consultar Proyectos</a></li>
-      </ul>
-    </nav>
-  </header>
-  </div>
-   <div class="row">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center well">
       <h1>Editar de cliente</h1>
-
+      <img src="{{asset("img/gato.gif")}}"> 
     </div>
     </div>
+@stop
+@section('contenido')
+    <div class="container">
     <div class="row">
-    	<div class="col-xs-12">
+    	<div class="col-xs-12 ">
     	<form action="{{url('actualizarcliente')}}/{{$clientes->id}}" method="POST">
     			<input type="hidden" name="_token" value="{{csrf_token()}}">
 
@@ -53,5 +34,4 @@
     	</div>
     </div>
  </div>
-</body>
-</html>
+@stop

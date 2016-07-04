@@ -1,36 +1,19 @@
-<!DOCTYPE html>
- <html lan="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Consultar clientes</title>
-    <link rel="stylesheet" href="{{asset("css/bootstrap.css")}}">
-    <link rel="stylesheet" type="text/css" href="{{asset("css/estilos.css")}}">
-
-  </head>
-  <body>
-   <div class="container">
-   <div class="row">
-    <header>  
-    <nav>
-      <ul> 
-        <li><a href="{{asset('/')}}">Home</a></li>
-        <li><a href="{{asset('/asignarusuarios')}}">Asignar usuarios</a></li>
-        <li><a href="{{asset('/usuarios')}}">Consulta Usuarios</a></li>
-        <li><a href="{{asset('/consultarclientes')}}">Consultar Clientes</a></li>
-        <li><a href="{{asset('/consultarproyectos')}}">Consultar Proyectos</a></li>
-      </ul>
-    </nav>
-  </header>
-  </div>
+@extends('master')
+@section('encabezado')
 	<div class="row">
      <div class="col-xs-12 text-center well">
-            <h1>Lista de clientes</h1>
+            <h1>Seccion clientes</h1>
             <img src="{{asset("img/gato.gif")}}"> 
             <!--asset es necesario para las imagenes fijas ¡-->
      </div>
+@stop
+@section('contenido')
+     <div class="col-xs-12 ">
      <a href="{{url('/registrarcliente')}}" class="btn btn-success">Nuevo cliente
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
+    </div>
+    <div class="container">
      <div class="row">
       <div class="col-xs-12">
        <table class="table table-hover">
@@ -67,6 +50,5 @@
        </table>
        </div>
      </div>
-   </div>
-  </body>
-</html>
+ </div>
+@stop   

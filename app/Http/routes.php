@@ -12,7 +12,9 @@
 */
 
 //HOME
-Route::get('/', function (){return view('welcome');});
+Route::get('/', function (){return view('principal');});
+Route::get('/principal', function (){return view('welcome');});
+
 
 Route::get('/home/{nombre}/{edad}', 'ejemplocontroller@index');
 
