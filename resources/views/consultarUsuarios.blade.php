@@ -3,7 +3,7 @@
 <div class="row">
        <div class="col-xs-12 text-center well">
         <h1>Seccion de usuarios</h1>
-              <img src="{{asset("img/gato.gif")}}"> 
+          
               <!--asset es necesario para las imagenes fijas ¡-->
        </div>
       </div>

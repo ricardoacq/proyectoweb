@@ -48,6 +48,7 @@
  <div class="row">
   <div class="col-xs-12 text-center well">
    @yield('encabezado')
+    <img src="{{asset("img/gato.gif")}}"> 
    </div>
   </div>
    <hr>

@@ -3,7 +3,6 @@
    <div class="row">
     <div class="col-xs-12 text-center well">
       <h1>Registrar Nuevo Proyecto</h1>
-      <img src="{{asset("img/gato.gif")}}"> 
     </div>
     </div>
 @stop

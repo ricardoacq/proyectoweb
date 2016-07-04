@@ -3,7 +3,6 @@
 
 
         <h1>Asignar Usuarios</h1>
-              <img src="{{asset("img/gato.gif")}}"> 
               <!--asset es necesario para las imagenes fijas ¡-->
 
 @stop

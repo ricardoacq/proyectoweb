@@ -3,7 +3,7 @@
    <div class="row">
     <div class="col-xs-12 text-center well">
       <h1>Editar de cliente</h1>
-      <img src="{{asset("img/gato.gif")}}"> 
+   
     </div>
     </div>
 @stop

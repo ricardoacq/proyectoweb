@@ -3,13 +3,14 @@
 <div class="row">
     <div class="col-xs-12 text-center well">
       <h1>Seccion de Proyectos</h1>
-      <img src="{{asset("img/gato.gif")}}"> 
+     
     </div>
     </div>
 @stop
 @section('contenido')
      <a href="{{url('/registrarproyecto')}}" class="btn btn-success">Nuevo proyecto
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+            
        <table class="table table-hover">
          <thead>
          	<tr>
