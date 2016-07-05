@@ -46,13 +46,13 @@ class ejemplocontroller extends Controller
             }
 
 //registrar nuevo
-         public function registrarusuario(){
+        public function registrarusuario(){
          return view('registrarusuario');
         }
-         public function registrarcliente(){
+        public function registrarcliente(){
          return view('registrarcliente');
         }
-         public function registrarproyecto(){
+        public function registrarproyecto(){
          return view('registrarproyecto');
         }
 
