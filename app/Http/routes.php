@@ -65,3 +65,5 @@ Route::post('/seleccionarrequisitos','ejemplocontroller@seleccionarrequisitos');
 
 //GENERAR PDFS
 Route::get('/PDFproyectos/{id}','ejemplocontroller@PDFproyectos');
+Route::get('/PDFrequisitos/{id}','ejemplocontroller@PDFrequisitos');
+

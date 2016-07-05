@@ -241,4 +241,20 @@ class ejemplocontroller extends Controller
         $dompdf->loadHTML($vista);
         return $dompdf->stream();}
 
+    public function PDFrequisitos($id){
+     $lista=DB::table('proyectos_requisitos')
+        ->where('id_proyecto','=',$id)
+        ->lists('id_requisitos');
+
+     $requisitos=DB::table('requisitos')
+        ->whereIn('id',$lista)
+        ->orderBy('id','asc')
+        ->get();
+        $proyecto=proyecto::find($id);
+
+        $vista=view('PDFrequisitos',compact('requisitos','proyecto'));
+        $dompdf=\App::make('dompdf.wrapper');
+        $dompdf->loadHTML($vista);
+        return $dompdf->stream();}
+
 }

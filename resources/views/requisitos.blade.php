@@ -30,6 +30,8 @@
                     <tH>Descripcion</tH>
                     <tH>Prioridad</tH>
                     <tH>Horas</tH>
+                     <tH>Opciones</tH>
+                     <tH>PDF</tH>
                   </tr>
                   <tbody>
                   @foreach($requisitos as $r)
@@ -46,6 +48,8 @@
                   <span class="glyphicon glyphicon-edit" aria-hidden="true">Editar</span>
                 </a>
               </td>
+              <td><a href="{{url('/PDFrequisitos')}}/{{$p->id}}">
+                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>
                   </tr>
                   @endforeach
                  </tbody>              
