@@ -67,7 +67,9 @@ class ejemplocontroller extends Controller
         public function registrarrequisito(Request $Request){
         $proyectos=proyecto::all();
         $id=$Request->input('proyectos');
+
             return view ('/registrarrequisito');
+
         }
 
 //guardar cambios        
@@ -184,8 +186,10 @@ class ejemplocontroller extends Controller
     }
     public function requisitos(){
     $proyectos=proyecto::all();
+
     $requisitos=requisitos::all();
     return view('requisitos',compact('proyectos','requisitos'));
+
     }
 
 //seleccionar

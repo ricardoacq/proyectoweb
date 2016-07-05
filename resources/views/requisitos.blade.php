@@ -4,8 +4,10 @@
 @stop
 @section('contenido')
          
+
          <form action="{{url('/seleccionarrequisitos')}}" method='POST'>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
+
 
            <div class="form-group">
             <label for="">Proyectos</label>
@@ -15,6 +17,7 @@
                 {{$p->descripcion}}</option>
                  @endforeach
             </select>
+
             <input class="btn btn-primary" type="submit" value="asignar requisitos">
           </div> 
           
@@ -56,4 +59,5 @@
           </div> 
          </form></tr>
              </table>
+
 @stop

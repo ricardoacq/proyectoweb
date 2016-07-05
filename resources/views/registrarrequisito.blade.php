@@ -12,6 +12,7 @@
     	<div class="col-xs-12">
     	<form action="{{url('/guardarrequisito')}}" method="POST">
     		<input type="hidden" name="_token" value="{{csrf_token()}}">
+
     		<div class="form-group">
              <label for="descripcion" >Descripcion:</label>
              <input type="text"class="form-control" name="descripcion">
