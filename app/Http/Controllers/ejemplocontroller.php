@@ -7,9 +7,10 @@ use App\Http\Requests;
 use App\Usuario;
 use App\clientes;
 use App\proyecto;
+use App\requisitos;
 use DB;
 use App\usuarios_proyectos;
-
+use App\proyectosrequisitos;
 class ejemplocontroller extends Controller
 {
   //muestra listas
@@ -23,11 +24,15 @@ class ejemplocontroller extends Controller
 
      public function consultarclientes(){
         $clientes=clientes::all();
+
         return view('consultarclientes',compact('clientes'));
             }           
 
      public function consultarproyectos(){
-       $proyectos=proyecto::all();
+       $proyectos=DB::table('proyectos')
+       ->join('clientes','proyectos.id_cliente','=','clientes.id')
+       ->select('proyectos.id','proyectos.descripcion','clientes.nombre')
+       ->get();
           return view('consultarproyectos',compact('proyectos'));
             }
 
@@ -44,6 +49,10 @@ class ejemplocontroller extends Controller
              proyecto::find($id)->delete();
              return Redirect('/consultarproyectos');
             }
+     public function eliminarreq($id){
+             requisitos::find($id)->delete();
+             return Redirect('/requisitos');
+            }
 
 //registrar nuevo
         public function registrarusuario(){
@@ -54,6 +63,11 @@ class ejemplocontroller extends Controller
         }
         public function registrarproyecto(){
          return view('registrarproyecto');
+        }
+        public function registrarrequisito(Request $Request){
+        $proyectos=proyecto::all();
+        $id=$Request->input('proyectos');
+            return view ('/registrarrequisito');
         }
 
 //guardar cambios        
@@ -80,7 +94,15 @@ class ejemplocontroller extends Controller
         $proyectos->save();
         return Redirect('/consultarclientes');
     }
+    public function guardarrequisito(Request $Request){ //request guarda la informacion para utilizarse en la BD
+        $requisitos=new requisitos();
+        $requisitos->descripcion=$Request->input('descripcion');
+        $requisitos->prioridad=$Request->input('prioridad');
+        $requisitos->horas=$Request->input('horas');
+        $requisitos->save();
 
+        return Redirect('/requisitos');
+    }
 
 //editar
     public function editarusuario($id){
@@ -94,6 +116,10 @@ class ejemplocontroller extends Controller
      public function editarproyecto($id){
         $proyectos=proyecto::find($id);
     return view('/editarproyecto', compact('proyectos'));
+    }
+    public function editarreq($id){
+        $requisitos=requisitos::find($id);
+    return view('/editarreq', compact('requisitos'));
     }
 
 //actualizar
@@ -131,18 +157,41 @@ class ejemplocontroller extends Controller
           return Redirect('/asignarusuarios');
         
     }
+    public function actualizaproyectosrequisitos(Request $Request,$id){
+      $requisitos=$Request->input('seleccionado');
+      foreach ($requisitos as $r ) {
+          $registro=new proyectosrequisitos();
+          $registro->id_requisitos=$r;
+          $registro->id_proyecto=$id;
+          $registro->save();
+      }
+          return Redirect('/asignarusuarios');
+        
+    }
+    public function actualizarreq(Request $Request,$id){
+    $requisitos=requisitos::find($id);
+    $requisitos->descripcion =$Request ->input('descripcion');
+    $requisitos->prioridad =$Request ->input('prioridad');
+    $requisitos->horas =$Request ->input('horas');
+    $requisitos->save();
+        return Redirect('/requisitos');
+    }
 
 //asignar
     public function asignarusuarios(){
     $proyectos=proyecto::all();
     return view('asignarUsuarios',compact('proyectos'));
     }
+    public function requisitos(){
+    $proyectos=proyecto::all();
+    $requisitos=requisitos::all();
+    return view('requisitos',compact('proyectos','requisitos'));
+    }
 
 //seleccionar
     public function seleccionarUsuarios(Request $Request){
         $proyectos=proyecto::all();
         $id=$Request->input('proyectos');
-        
 
         $lista=DB::table('usuarios_proyectos')
         ->where('id_proyecto','=',$id)
@@ -153,6 +202,21 @@ class ejemplocontroller extends Controller
         ->orderBy('id','asc')
         ->get();
         return view('seleccionarUsuarios', compact('proyectos','usuarios','id'));
+
+    }
+       public function seleccionarrequisitos(Request $Request){
+        $proyectos=proyecto::all();
+        $id=$Request->input('proyectos');
+
+        $lista=DB::table('proyectos_requisitos')
+        ->where('id_proyecto','=',$id)
+        ->lists('id_requisitos');
+
+        $requisitos=DB::table('requisitos')
+        ->whereNotIn('id',$lista)
+        ->orderBy('id','asc')
+        ->get();
+        return view('seleccionarrequisitos', compact('proyectos','requisitos','id'));
 
     }
    

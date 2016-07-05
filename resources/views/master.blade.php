@@ -33,6 +33,7 @@
             <li><a href="{{url('/usuarios')}}">Usuarios</a></li>
           </ul>
         </li>
+        <li><a href="{{url('/requisitos')}}">Requisitos</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">

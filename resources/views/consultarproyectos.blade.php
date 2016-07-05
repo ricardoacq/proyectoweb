@@ -16,8 +16,8 @@
          	<tr>
          		<th>ID</th>
          		<th>Descripcion</th>
-         		<th>ID Cliente</th>
-         		<th>Eliminar</th>
+         		<th>nombre de Cliente</th>
+         		<th>Opciones</th>
          	</tr>
          </thead>
          <tbody>
@@ -25,7 +25,7 @@
          	<tr>
          		<td>{{$p->id}}</td>
          		<td>{{$p->descripcion}}</td>
-         		<td>{{$p->id_cliente}}</td>
+         		<td>{{$p->nombre}}</td>
          		<td>
               
             <a  class="btn btn-danger btn-xs" href="{{url('/eliminarproyecto')}}/{{$p->id}}">
